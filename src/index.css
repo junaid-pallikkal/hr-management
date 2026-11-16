@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* Colors are defined once here. Components only use the token names below. */
+:root {
+  --c-bg: #f2f3ff;
+  --c-surface: #ffffff;
+  --c-soft: #eceefc;
+  --c-fg: #1c2040;
+  --c-muted: #6f7597;
+  --c-primary: #4f67e8;
+  --c-primary-fg: #ffffff;
+  --c-danger: #d92d20;
+  --c-success: #0f8a66;
+  --c-warning: #c2610c;
+  --c-overlay: rgb(28 32 64 / 0.5);
+  --sh-soft: 0 2px 12px rgb(79 103 232 / 0.08);
+  --sh-raised: 0 12px 32px rgb(40 52 120 / 0.2);
+}
+
+@theme {
+  --color-*: initial;
+  --text-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+}
+
+@theme inline {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-soft: var(--c-soft);
+  --color-fg: var(--c-fg);
+  --color-muted: var(--c-muted);
+  --color-primary: var(--c-primary);
+  --color-primary-fg: var(--c-primary-fg);
+  --color-danger: var(--c-danger);
+  --color-success: var(--c-success);
+  --color-warning: var(--c-warning);
+  --color-overlay: var(--c-overlay);
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --text-title: 20px;
+  --text-title--line-height: 28px;
+  --text-section: 16px;
+  --text-section--line-height: 24px;
+  --text-body: 14px;
+  --text-body--line-height: 20px;
+  --text-small: 12px;
+  --text-small--line-height: 16px;
+  --radius-ui: 12px;
+  --radius-full: 9999px;
+  --shadow-soft: var(--sh-soft);
+  --shadow-raised: var(--sh-raised);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-fg);
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+svg.lucide {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 2px;
+}
+
+@layer components {
+  .card {
+    @apply rounded-ui bg-surface p-5 shadow-soft;
+  }
+  .input {
+    @apply w-full rounded-ui bg-soft px-3 py-2 text-body text-fg outline-none placeholder:text-muted disabled:opacity-60;
+  }
+  .input:focus {
+    box-shadow: 0 0 0 2px var(--c-primary);
+  }
+}
